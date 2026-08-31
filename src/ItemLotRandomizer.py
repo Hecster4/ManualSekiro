@@ -33,18 +33,8 @@ def randomize_item_lot_param(content):
         data_modified[random_location][41:65] = data_original[item_lot_id][41:65]
         replacments[random_location] = item_lot_id
     for item_lot_id in important_items + key_items:
-        data_modified[item_lot_id][0] = 11500
-        for i in range(1,8):
-            data_modified[item_lot_id][i] = 0
-        data_modified[item_lot_id][8] = 1073741824
-        for i in range(9, 16):
-            data_modified[item_lot_id][i] = 0
-        data_modified[item_lot_id][16] = 1000
-        for i in range(17, 24):
-            data_modified[item_lot_id][i] = 0
-        data_modified[item_lot_id][57] = 1
-        for i in range(58, 65):
-            data_modified[item_lot_id][i] = 0
+        data_modified[item_lot_id][0:40] = data_original[1300210][0:40]
+        data_modified[item_lot_id][41:65] = data_original[1300210][41:65]
     write_items_json(replacments)
     offset = item_lot_id_param_offset + 0x40
     param = content[item_lot_id_param_offset:offset]
